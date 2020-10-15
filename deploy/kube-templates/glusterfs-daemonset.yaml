@@ -1,20 +1,25 @@
 ---
+apiVersion: apps/v1
 kind: DaemonSet
-apiVersion: extensions/v1beta1
 metadata:
   name: glusterfs
+  namespace: default
   labels:
+    k8s-app: glusterfs
+    version: v1
+    kubernetes.io/cluster-service: "true"
     glusterfs: daemonset
-  annotations:
-    description: GlusterFS DaemonSet
-    tags: glusterfs
 spec:
+  selector:
+    matchLabels:
+      k8s-app: glusterfs
   template:
     metadata:
-      name: glusterfs
       labels:
-        glusterfs: pod
-        glusterfs-node: pod
+        k8s-app: glusterfs
+        version: v1
+        kubernetes.io/cluster-service: "true"
+        glusterfs: daemonset
     spec:
       nodeSelector:
         storagenode: glusterfs
