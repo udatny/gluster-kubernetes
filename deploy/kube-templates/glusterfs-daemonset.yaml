@@ -19,7 +19,8 @@ spec:
         k8s-app: glusterfs
         version: v1
         kubernetes.io/cluster-service: "true"
-        glusterfs: daemonset
+        glusterfs: pod
+        glusterfs-node: pod        
     spec:
       nodeSelector:
         storagenode: glusterfs
