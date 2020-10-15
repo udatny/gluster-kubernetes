@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: glusterfs
-  namespace: default
   labels:
     k8s-app: glusterfs
     version: v1
